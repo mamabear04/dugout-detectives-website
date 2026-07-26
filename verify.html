@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Verify Your Solution | Dugout Detectives
+  </title>
+
+  <meta
+    name="description"
+    content="Verify your final remaining name for Dugout Detectives Case File #001: The Missing MVP."
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+
+      <a
+        class="brand"
+        href="index.html"
+      >
+        Dugout Detectives
+      </a>
+
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="verify.html">Verify</a>
+        <a href="about.html">About</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="verify-hero">
+      <div class="container verify-container">
+
+        <p class="eyebrow">
+          Official Case Verification
+        </p>
+
+        <h1 class="verify-title">
+          Did You Solve the Case?
+        </h1>
+
+        <p class="verify-intro">
+          Enter the one remaining name from your player roster.
+          We will check your conclusion without revealing the
+          correct answer if your investigation is incomplete.
+        </p>
+
+        <div class="case-terminal">
+
+          <div class="terminal-heading">
+            <span>Case File #001</span>
+            <span class="status-open">
+              Verification Active
+            </span>
+          </div>
+
+          <h2>
+            The Missing MVP
+          </h2>
+
+          <form
+            id="solution-form"
+            class="solution-form"
+          >
+
+            <label for="solution-name">
+              Remaining player name
+            </label>
+
+            <input
+              id="solution-name"
+              name="solution-name"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Enter the remaining name"
+              required
+            >
+
+            <button
+              class="button button-primary verify-button"
+              type="submit"
+            >
+              Verify Suspect
+            </button>
+
+          </form>
+
+          <div
+            id="verification-result"
+            class="verification-result"
+            aria-live="polite"
+          ></div>
+
+        </div>
+
+        <section
+          id="case-solved-reward"
+          class="case-solved-reward"
+          hidden
+        >
+
+          <p class="eyebrow">
+            Investigation Complete
+          </p>
+
+          <h2>
+            Case Solved, Detective!
+          </h2>
+
+          <p>
+            You correctly followed all 18 evidence files and
+            eliminated 49,999 names.
+          </p>
+
+          <p>
+            Your conclusion matches the official Championship
+            MVP record.
+          </p>
+
+          <div class="reward-placeholder">
+            Championship presentation reward coming soon.
+          </div>
+
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+
+      <p>
+        © 2026 Dugout Detectives. All rights reserved.
+      </p>
+
+      <p>
+        <a href="https://dugoutdetectives.com">
+          dugoutdetectives.com
+        </a>
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
