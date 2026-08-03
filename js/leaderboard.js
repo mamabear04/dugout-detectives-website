@@ -5,20 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.querySelector("#leaderboard-form");
   const message = document.querySelector("#leaderboard-message");
 
-  const solverCount = document.querySelector("#solver-count");
-  const fastestTime = document.querySelector("#fastest-time");
-
-  const filterButtons = document.querySelectorAll(
-    ".scoreboard-filter"
-  );
-
-  const preview = document.querySelector("#solve-time-preview");
-  const hoursInput = document.querySelector("#solve-hours");
-  const minutesInput = document.querySelector("#solve-minutes");
-  const secondsInput = document.querySelector("#solve-seconds");
-
-  let allEntries = [];
-  let activeFilter = "all";
+  const leaderName = document.querySelector("#board-leader-name");
+  const bestTime = document.querySelector("#board-best-time");
+  const solverCount = document.querySelector("#board-solver-count");
 
   const formatTime = (seconds) => {
     const total = Number(seconds) || 0;
@@ -33,82 +22,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     return `${minutes}:${String(secs).padStart(2, "0")}`;
   };
 
-  const formatDate = (value) => {
-    if (!value) {
-      return "—";
-    }
+  const renderEmpty = (title, copy) => {
+    rows.innerHTML = `
+      <div class="scoreboard-empty">
+        <strong>${title}</strong>
+        <p>${copy}</p>
+      </div>
+    `;
 
-    return new Intl.DateTimeFormat("en", {
-      month: "short",
-      day: "numeric",
-      year: "numeric"
-    }).format(new Date(value));
+    leaderName.textContent = "Waiting";
+    bestTime.textContent = "—";
+    solverCount.textContent = "0";
   };
 
-  const updatePreview = () => {
-    const total =
-      Number(hoursInput.value || 0) * 3600
-      + Number(minutesInput.value || 0) * 60
-      + Number(secondsInput.value || 0);
-
-    preview.textContent = formatTime(total);
-  };
-
-  [hoursInput, minutesInput, secondsInput].forEach((input) => {
-    input.addEventListener("input", updatePreview);
-  });
-
-  const setPodiumCard = (id, entry) => {
-    const card = document.querySelector(id);
-
-    const name = card.querySelector(".podium-name");
-    const time = card.querySelector(".podium-time");
-
-    if (!entry) {
-      name.textContent = "Waiting";
-      time.textContent = "No time posted";
-      return;
-    }
-
-    name.textContent = entry.username;
-    time.textContent = formatTime(entry.solve_seconds);
-  };
-
-  const filteredEntries = () => {
-    if (activeFilter === "all") {
-      return allEntries;
-    }
-
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - Number(activeFilter));
-
-    return allEntries.filter((entry) => {
-      return entry.updated_at
-        && new Date(entry.updated_at) >= cutoff;
-    });
-  };
-
-  const render = () => {
-    const entries = filteredEntries();
-
+  const renderEntries = (entries) => {
     solverCount.textContent = entries.length.toLocaleString();
-    fastestTime.textContent = entries.length
-      ? formatTime(entries[0].solve_seconds)
-      : "—";
-
-    setPodiumCard("#podium-first", entries[0]);
-    setPodiumCard("#podium-second", entries[1]);
-    setPodiumCard("#podium-third", entries[2]);
 
     if (!entries.length) {
-      rows.innerHTML = `
-        <div class="scoreboard-empty">
-          <strong>No official times yet.</strong>
-          <span>Be the first solver to enter the lineup.</span>
-        </div>
-      `;
+      renderEmpty(
+        "No official times yet.",
+        "Be the first verified solver to enter the lineup."
+      );
       return;
     }
+
+    leaderName.textContent = entries[0].username;
+    bestTime.textContent = formatTime(
+      entries[0].solve_seconds
+    );
 
     rows.innerHTML = entries.map((entry, index) => `
       <div class="scoreboard-row">
@@ -116,7 +57,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         <span class="solver-cell">${entry.username}</span>
         <span>#${entry.case_number}</span>
         <span class="time-cell">${formatTime(entry.solve_seconds)}</span>
-        <span class="date-cell">${formatDate(entry.updated_at)}</span>
       </div>
     `).join("");
   };
@@ -130,36 +70,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       .limit(100);
 
     if (error) {
-      rows.innerHTML = `
-        <div class="scoreboard-empty">
-          <strong>Scoreboard unavailable.</strong>
-          <span>
-            Complete the Supabase setup before publishing
-            official standings.
-          </span>
-        </div>
-      `;
+      renderEmpty(
+        "The scoreboard is ready for data.",
+        "The visual scoreboard is live. Run the Supabase setup so reader accounts and official times can be stored and displayed."
+      );
       return;
     }
 
-    allEntries = Array.isArray(data) ? data : [];
-    render();
+    renderEntries(Array.isArray(data) ? data : []);
   };
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activeFilter = button.dataset.filter;
-
-      filterButtons.forEach((item) => {
-        item.classList.toggle(
-          "active",
-          item === button
-        );
-      });
-
-      render();
-    });
-  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -176,9 +95,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const total =
-      Number(hoursInput.value || 0) * 3600
-      + Number(minutesInput.value || 0) * 60
-      + Number(secondsInput.value || 0);
+      Number(document.querySelector("#solve-hours").value || 0) * 3600
+      + Number(document.querySelector("#solve-minutes").value || 0) * 60
+      + Number(document.querySelector("#solve-seconds").value || 0);
 
     if (total < 1) {
       message.textContent =
@@ -208,12 +127,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     message.textContent =
-      "Your best time is now on the official scoreboard.";
+      "Your official time is now on the scoreboard.";
     message.className = "form-message good";
 
     await load();
   });
 
-  updatePreview();
   await load();
 });
