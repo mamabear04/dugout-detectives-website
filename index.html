@@ -2,79 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Dugout Detectives | The 50,000-Name Softball Mystery Series
-  </title>
-
+  <title>Dugout Detectives | Step Onto the Field</title>
   <meta
     name="description"
-    content="Enter the world of Dugout Detectives, the softball mystery puzzle series where readers follow the evidence, eliminate names, and solve the case."
+    content="Step onto the softball field and solve The Missing MVP, a 50,000-name softball mystery puzzle."
   >
+  <link rel="canonical" href="https://dugoutdetectives.com/">
 
-  <link
-    rel="canonical"
-    href="https://dugoutdetectives.com/"
-  >
-
-  <meta
-    property="og:title"
-    content="Dugout Detectives: Case File #001"
-  >
-
+  <meta property="og:title" content="Dugout Detectives: Case File #001">
   <meta
     property="og:description"
-    content="Start with 50,000 names. Follow the clues. Eliminate the suspects. Find the missing MVP."
+    content="50,000 names. 18 evidence files. One missing MVP. Can you solve the case?"
   >
-
   <meta
     property="og:image"
     content="https://dugoutdetectives.com/images/book1-product-photo.jpg"
   >
+  <meta property="og:url" content="https://dugoutdetectives.com/">
+  <meta property="og:type" content="website">
 
-  <meta
-    property="og:url"
-    content="https://dugoutdetectives.com/"
-  >
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Nunito+Sans:wght@400;600;700;800&display=swap"
     rel="stylesheet"
-    href="css/style.css"
   >
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="field-home">
 
   <header class="site-header">
     <div class="container nav-wrap">
 
-      <a
-        class="brand"
-        href="index.html"
-      >
+      <a class="brand" href="index.html">
+        <span class="brand-softball" aria-hidden="true">●</span>
         Dugout Detectives
       </a>
 
-      <nav
-        class="site-nav"
-        aria-label="Main navigation"
-      >
-        <a href="index.html">Home</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="roster.html">Roster</a>
         <a href="verify.html">Verify</a>
-        <a href="about.html">About</a>
         <a href="leaderboard.html">Scoreboard</a>
-        <a href="account.html">Sign In</a>
+        <a href="about.html">About</a>
+        <a class="nav-sign-in" href="account.html">Sign In</a>
       </nav>
 
     </div>
@@ -82,169 +56,235 @@
 
   <main>
 
-    <section class="new-hero">
+    <section class="field-hero" aria-labelledby="hero-title">
 
-      <div class="new-hero-overlay"></div>
+      <div class="hero-cloud cloud-one" aria-hidden="true"></div>
+      <div class="hero-cloud cloud-two" aria-hidden="true"></div>
 
-      <div class="container new-hero-grid">
+      <div class="light-tower light-tower-left" aria-hidden="true">
+        <span></span>
+      </div>
 
-        <div class="new-hero-copy">
+      <div class="light-tower light-tower-right" aria-hidden="true">
+        <span></span>
+      </div>
 
-          <p class="eyebrow">
-            The 50,000-Name Softball Mystery Series
+      <div class="outfield-stripes" aria-hidden="true"></div>
+      <div class="foul-line foul-line-left" aria-hidden="true"></div>
+      <div class="foul-line foul-line-right" aria-hidden="true"></div>
+
+      <div class="container field-hero-grid">
+
+        <div class="field-hero-copy">
+
+          <p class="season-badge">
+            Softball Season Starts Here
           </p>
 
-          <h1>
-            Softball Season Starts Here
+          <h1 id="hero-title">
+            Step Onto the Field.
+            <span>Solve the Mystery.</span>
           </h1>
 
-          <p class="new-hero-lead">
-            Step onto the field, follow the clues, and solve a mystery built for people who believe softball season is the best season.
+          <p class="field-hero-lead">
+            Start with 50,000 names. Follow 18 evidence files.
+            Eliminate the suspects and uncover the missing
+            Championship MVP before the final out.
           </p>
 
           <div class="hero-actions">
-
-            <a
-              class="button button-primary"
-              href="#case-file-001"
-            >
-              Begin the Investigation
+            <a class="button button-primary" href="#today-matchup">
+              Open Case File #001
             </a>
 
-            <a
-              class="button button-secondary"
-              href="verify.html"
-            >
-              Verify Your Solution
+            <a class="button button-light" href="roster.html">
+              Search the Roster
             </a>
+          </div>
 
+          <div class="hero-stat-row" aria-label="Case highlights">
+            <span><strong>50,000</strong> names</span>
+            <span><strong>18</strong> clues</span>
+            <span><strong>1</strong> missing MVP</span>
           </div>
 
         </div>
 
-        <div class="new-hero-art">
+        <div class="field-hero-art">
 
-          <img
-            src="images/book1-product-photo.jpg"
-            alt="Dugout Detectives Case File 001 book displayed on a softball field at sunset"
-            class="product-photo"
-          >
+          <div class="book-card">
+            <span class="book-card-label">Featured Case</span>
+
+            <img
+              src="images/book1-product-photo.jpg"
+              alt="Dugout Detectives Case File 001 displayed on a softball field"
+            >
+
+            <div class="book-card-footer">
+              <strong>Case File #001</strong>
+              <span>The Missing MVP</span>
+            </div>
+          </div>
 
         </div>
 
       </div>
-    </section>
 
-    <section class="season-scoreboard" aria-label="Season scoreboard">
-      <div class="container season-scoreboard-grid">
-        <div><span>HOME</span><strong>CLUES</strong></div>
-        <div class="inning"><span>INNING</span><strong>001</strong></div>
-        <div><span>VISITORS</span><strong>SUSPECTS</strong></div>
+      <div class="infield-arc" aria-hidden="true">
+        <span class="home-plate"></span>
       </div>
+
     </section>
 
-    <section class="section season-vibes">
+    <section id="today-matchup" class="matchup-section">
       <div class="container">
-        <p class="eyebrow">Fresh Air. Bright Lights. One Big Mystery.</p>
-        <h2>Everything We Love About Softball Season</h2>
-        <div class="season-card-grid">
-          <article class="season-card"><span>🥎</span><h3>Game-Day Energy</h3><p>Sunshine, dugout chatter, scoreboards, and the thrill of the next pitch.</p></article>
-          <article class="season-card"><span>🔎</span><h3>Clues in Every Inning</h3><p>Use logic and deduction to narrow 50,000 names down to one MVP.</p></article>
-          <article class="season-card"><span>🏆</span><h3>Earn Your Spot</h3><p>Verify your solution and post your finishing time on the Clutch Solver Scoreboard.</p></article>
+
+        <div class="stadium-scoreboard">
+
+          <p class="scoreboard-label">
+            Today's Matchup
+          </p>
+
+          <div class="scoreboard-main">
+
+            <div class="scoreboard-team">
+              <small>Home</small>
+              <strong>You</strong>
+            </div>
+
+            <div class="scoreboard-vs">
+              VS
+            </div>
+
+            <div class="scoreboard-team">
+              <small>Visitor</small>
+              <strong>The Missing MVP</strong>
+            </div>
+
+          </div>
+
+          <div class="scoreboard-details">
+            <span>Case Status</span>
+            <strong>Open</strong>
+            <span>Evidence Files</span>
+            <strong>18</strong>
+            <span>Final Name</span>
+            <strong>?</strong>
+          </div>
+
         </div>
+
       </div>
     </section>
 
-    <section class="case-stats">
-      <div class="container stats-grid">
+    <section class="section bases-section">
+      <div class="container">
 
-        <div class="stat-card">
-          <strong>50,000</strong>
-          <span>Player Names</span>
-        </div>
+        <p class="eyebrow centered">
+          Make Your Way Around the Diamond
+        </p>
 
-        <div class="stat-card">
-          <strong>18</strong>
-          <span>Evidence Files</span>
-        </div>
+        <h2 class="homepage-section-title centered">
+          Four Stops. One Solved Case.
+        </h2>
 
-        <div class="stat-card">
-          <strong>1</strong>
-          <span>Missing MVP</span>
+        <div class="bases-grid">
+
+          <a class="base-action-card" href="roster.html">
+            <span class="base-marker">1</span>
+            <span class="base-emoji" aria-hidden="true">📋</span>
+            <h3>First Base</h3>
+            <strong>Search the Roster</strong>
+            <p>
+              Find names and start eliminating suspects.
+            </p>
+          </a>
+
+          <a class="base-action-card" href="#featured-case">
+            <span class="base-marker">2</span>
+            <span class="base-emoji" aria-hidden="true">🔎</span>
+            <h3>Second Base</h3>
+            <strong>Study the Case</strong>
+            <p>
+              Follow every clue and test your deductions.
+            </p>
+          </a>
+
+          <a class="base-action-card" href="verify.html">
+            <span class="base-marker">3</span>
+            <span class="base-emoji" aria-hidden="true">✅</span>
+            <h3>Third Base</h3>
+            <strong>Verify Your Answer</strong>
+            <p>
+              Check the final name left on your list.
+            </p>
+          </a>
+
+          <a class="base-action-card" href="leaderboard.html">
+            <span class="base-marker">H</span>
+            <span class="base-emoji" aria-hidden="true">🏆</span>
+            <h3>Home Plate</h3>
+            <strong>Claim the Scoreboard</strong>
+            <p>
+              Submit your solve time and join the leaders.
+            </p>
+          </a>
+
         </div>
 
       </div>
     </section>
 
-    <section
-      id="case-file-001"
-      class="section case-file-section"
-    >
-      <div class="container case-file-grid">
+    <section id="featured-case" class="section featured-case-section">
+      <div class="container featured-case-grid">
 
-        <div class="case-cover-wrap">
+        <div class="featured-cover-wrap">
+
+          <span class="cover-sticker">
+            Case Open
+          </span>
 
           <img
             src="images/book1-front-cover.jpg"
             alt="Front cover of Dugout Detectives Case File 001: The Missing MVP"
-            class="case-cover"
+            class="featured-cover"
           >
 
         </div>
 
-        <div class="case-file-copy">
+        <div class="featured-case-copy">
 
           <p class="eyebrow">
-            Official Case File #001
+            Now Taking the Field
           </p>
 
           <h2>
             The Missing MVP
           </h2>
 
-          <p>
-            After a week of incredible competition, one player
-            is selected to receive the tournament's highest
-            honor: the Championship MVP Award.
+          <p class="featured-case-lead">
+            The official MVP record disappears before the
+            awards ceremony. Follow the evidence, eliminate
+            49,999 names, and find the one player who belongs
+            at the center of the mystery.
           </p>
 
-          <p>
-            Before the awards ceremony begins, the official MVP
-            record disappears.
-          </p>
+          <div class="case-feature-list">
 
-          <p>
-            Follow the evidence, eliminate 49,999 names, and
-            uncover the one player who belongs at the center of
-            the mystery.
-          </p>
-
-          <div class="case-status">
-
-            <span class="case-status-label">
-              Case Status
-            </span>
-
-            <strong>
-              Publication Pending
-            </strong>
+            <span>🥎 Built for softball fans</span>
+            <span>🧠 Logic and deduction challenge</span>
+            <span>🔍 Online roster and verification tools</span>
 
           </div>
 
           <div class="hero-actions">
 
-            <a
-              class="button button-primary"
-              href="roster.html"
-            >
+            <a class="button button-primary" href="roster.html">
               Search the Roster
             </a>
 
-            <a
-              class="button button-secondary"
-              href="verify.html"
-            >
-              Verify the Final Name
+            <a class="button button-secondary" href="verify.html">
+              Verify a Solution
             </a>
 
           </div>
@@ -254,130 +294,28 @@
       </div>
     </section>
 
-    <section class="section investigation-section">
-      <div class="container narrow">
-
-        <p class="eyebrow">
-          How the Investigation Works
-        </p>
-
-        <h2>
-          Read. Eliminate. Deduce. Solve.
-        </h2>
-
-        <div class="investigation-steps">
-
-          <article class="investigation-card">
-            <span>01</span>
-            <h3>Study the Evidence</h3>
-            <p>
-              Each evidence file reveals another fact about the
-              missing Championship MVP.
-            </p>
-          </article>
-
-          <article class="investigation-card">
-            <span>02</span>
-            <h3>Eliminate Names</h3>
-            <p>
-              Apply each clue carefully and cross impossible
-              players from the roster.
-            </p>
-          </article>
-
-          <article class="investigation-card">
-            <span>03</span>
-            <h3>Close the Case</h3>
-            <p>
-              Enter the last remaining name on the website to
-              verify your conclusion.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section roster-callout">
-      <div class="container callout">
+    <section class="section dugout-section">
+      <div class="container dugout-panel">
 
         <div>
-
           <p class="eyebrow">
-            Was Your Name Included?
+            Join the Dugout
           </p>
 
           <h2>
-            Search the Official Roster
+            Ready for the Next Inning?
           </h2>
 
           <p>
-            Search the 50,000-name roster used in Case File
-            #001. If your first name was not included, submit it
-            for possible use in a future mystery.
+            Create a reader profile, return to the site, and
+            add your official solve time to the Clutch Solver
+            Scoreboard.
           </p>
-
         </div>
 
-        <a
-          class="button button-primary"
-          href="roster.html"
-        >
-          Search Names
+        <a class="button button-light" href="account.html">
+          Create a Player Profile
         </a>
-
-      </div>
-    </section>
-
-    <section class="section thank-you-section">
-      <div class="container narrow">
-
-        <p class="eyebrow">
-          Thank You
-        </p>
-
-        <h2>
-          Built From a Community of Names
-        </h2>
-
-        <p>
-          Thank you to the 100,000+ people who believed in this
-          idea and shared their first names with us for Puzzle
-          Book 1.
-        </p>
-
-        <p>
-          Your support helped turn a giant collection of names
-          into a one-of-a-kind softball mystery.
-        </p>
-
-      </div>
-    </section>
-
-    <section class="section next-case-section">
-      <div class="container callout">
-
-        <div>
-
-          <p class="eyebrow">
-            Evidence Collection Underway
-          </p>
-
-          <h2>
-            Case File #002
-          </h2>
-
-          <p>
-            A new Dugout Detectives investigation is already
-            being prepared.
-          </p>
-
-        </div>
-
-        <span class="coming-soon-badge">
-          Coming Soon
-        </span>
 
       </div>
     </section>
@@ -392,18 +330,13 @@
       </p>
 
       <p>
-        <a href="https://dugoutdetectives.com">
-          dugoutdetectives.com
+        <a href="about.html">
+          About the Series
         </a>
       </p>
 
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/analytics.js"></script>
 </body>
 </html>
