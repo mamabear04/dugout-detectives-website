@@ -1,0 +1,29 @@
+DUGOUT DETECTIVES — COMPLETE EDITORIAL REFRESH
+
+This package contains complete replacement files for every solver-facing page:
+- index.html
+- roster.html
+- verify.html
+- leaderboard.html
+- account.html
+- about.html
+- css/style.css
+- js files used by those pages
+- updated book images
+
+Do not paste partial code. Replace the full files and folders.
+
+Recommended GitHub method:
+1. Download and extract this ZIP.
+2. Open your repository in GitHub Desktop.
+3. Open the local repository folder.
+4. Copy every extracted file and folder into the repository folder.
+5. Choose Replace when prompted.
+6. In GitHub Desktop, confirm the changed-file list.
+7. Commit with: Complete editorial website refresh
+8. Click Push origin.
+9. Wait for GitHub Pages to deploy.
+10. Hard-refresh the live site.
+
+The Roster and Verify JavaScript behavior is preserved.
+Account and Scoreboard require the Supabase tables/functions from supabase-setup.sql to already exist.

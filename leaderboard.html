@@ -1,1 +1,67 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Clutch Solver Scoreboard | Dugout Detectives</title><link rel="stylesheet" href="css/style.css"></head><body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">Dugout Detectives</a><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="roster.html">Roster</a><a href="verify.html">Verify</a><a href="about.html">About</a><a href="leaderboard.html">Scoreboard</a><a href="account.html">Sign In</a></nav></div></header><main class="section bright-page"><div class="container"><p class="eyebrow">Fastest Around the Bases</p><h1 class="page-title">Clutch Solver Scoreboard</h1><p class="page-lead">Solved the case? Post your official time and see where you rank.</p><section class="form-card"><h2>Post Your Time</h2><form id="leaderboard-form" class="score-form"><label>Username<input name="username" required maxlength="30"></label><label>Case<select name="case_number"><option value="001">Case File #001</option></select></label><div class="time-fields"><label>Hours<input name="hours" type="number" min="0" value="0"></label><label>Minutes<input name="minutes" type="number" min="0" max="59" value="0"></label><label>Seconds<input name="seconds" type="number" min="0" max="59" value="0"></label></div><button class="button button-primary">Add Me to the Scoreboard</button></form><p id="leaderboard-message" class="form-message" role="status"></p></section><section class="scoreboard-card"><table class="leaderboard-table"><thead><tr><th>Rank</th><th>Solver</th><th>Case</th><th>Time</th><th>Date</th></tr></thead><tbody id="leaderboard-body"><tr><td colspan="5">Loading scoreboard...</td></tr></tbody></table></section></div></main><footer class="site-footer"><div class="container footer-wrap"><p>© 2026 Dugout Detectives. All rights reserved.</p><p><a href="https://dugoutdetectives.com">dugoutdetectives.com</a></p></div></footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-config.js"></script><script src="js/leaderboard.js"></script><script src="js/analytics.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clutch Solver Scoreboard | Dugout Detectives</title>
+  <meta name="description" content="View and submit solve times.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Dugout Detectives</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="roster.html">Roster</a>
+        <a href="verify.html">Verify</a>
+        <a href="leaderboard.html">Scoreboard</a>
+        <a href="about.html">About</a>
+        <a class="nav-account" href="account.html">Sign In</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <p class="eyebrow">Clutch Solver Scoreboard</p>
+    <h1>Fastest Solvers</h1>
+    <p>Post the time it took to close the case and see where you rank.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container leaderboard-layout">
+    <section class="panel scoreboard-table-card">
+      <div class="scoreboard-table-head"><span>Rank</span><span>Solver</span><span>Case</span><span>Time</span></div>
+      <div id="leaderboard-rows" class="leaderboard-rows"><p class="loading-row">Loading the scoreboard…</p></div>
+    </section>
+    <aside class="panel submit-time-card">
+      <p class="eyebrow">Post Your Time</p>
+      <form id="leaderboard-form" class="leaderboard-form">
+        <label>Case<select id="case-number"><option value="001">Case File #001</option></select></label>
+        <div class="time-fields">
+          <label>Hours<input id="solve-hours" type="number" min="0" max="999" value="0" required></label>
+          <label>Minutes<input id="solve-minutes" type="number" min="0" max="59" value="0" required></label>
+          <label>Seconds<input id="solve-seconds" type="number" min="0" max="59" value="0" required></label>
+        </div>
+        <button class="button button-primary" type="submit">Submit Time</button>
+      </form>
+      <p id="leaderboard-message" class="form-message" role="status"></p>
+    </aside>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Dugout Detectives. All rights reserved.</p>
+      <p><a href="about.html">About the Series</a></p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-config.js"></script><script src="js/leaderboard.js"></script>
+</body>
+</html>

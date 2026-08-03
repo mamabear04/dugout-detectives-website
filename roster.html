@@ -2,275 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Player Roster | Dugout Detectives
-  </title>
-
-  <meta
-    name="description"
-    content="Search the official 50,000-name player roster used in Dugout Detectives Case File #001: The Missing MVP."
-  >
-
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Roster | Dugout Detectives</title>
+  <meta name="description" content="Search the official 50,000-name roster.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
   <header class="site-header">
     <div class="container nav-wrap">
-
-      <a
-        class="brand"
-        href="index.html"
-      >
-        Dugout Detectives
-      </a>
-
-      <nav class="site-nav">
+      <a class="brand" href="index.html">Dugout Detectives</a>
+      <nav class="site-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="roster.html">Roster</a>
         <a href="verify.html">Verify</a>
-        <a href="about.html">About</a>
         <a href="leaderboard.html">Scoreboard</a>
-        <a href="account.html">Sign In</a>
+        <a href="about.html">About</a>
+        <a class="nav-account" href="account.html">Sign In</a>
       </nav>
-
     </div>
   </header>
-
   <main>
-
-    <section class="roster-hero">
-      <div class="container roster-container">
-
-        <p class="eyebrow">
-          Player Database
-        </p>
-
-        <h1 class="roster-title">
-          Official Roster
-        </h1>
-
-        <p class="roster-intro">
-          Search the 50,000 player names used in
-          Dugout Detectives Case File #001:
-          The Missing MVP.
-        </p>
-
-        <div class="roster-search-card">
-
-          <label for="roster-search">
-            Was your name included in Puzzle Book 1?
-          </label>
-
-          <div class="roster-search-row">
-
-            <input
-              id="roster-search"
-              type="search"
-              autocomplete="off"
-              spellcheck="false"
-              placeholder="Enter a first name"
-            >
-
-            <button
-              id="roster-search-button"
-              class="button button-primary"
-              type="button"
-            >
-              Search Roster
-            </button>
-
-          </div>
-
-          <div
-            id="roster-search-result"
-            class="roster-search-result"
-            aria-live="polite"
-          ></div>
-
-        </div>
-
-        <section
-          id="name-request-section"
-          class="name-request-section"
-          hidden
-        >
-
-          <p class="eyebrow">
-            Future Case File Request
-          </p>
-
-          <h2>
-            Add Your Name to the Evidence Locker
-          </h2>
-
-          <p>
-            Your name was not found in Puzzle Book 1.
-            Submit your first name for possible inclusion in a
-            future Dugout Detectives puzzle.
-          </p>
-
-          <form
-            class="name-request-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
-          >
-
-            <label for="requested-name">
-              First name
-            </label>
-
-            <input
-              id="requested-name"
-              name="requested_name"
-              type="text"
-              maxlength="40"
-              autocomplete="given-name"
-              required
-            >
-
-            <input
-              type="hidden"
-              name="source"
-              value="Dugout Detectives roster page"
-            >
-
-            <input
-              class="form-honeypot"
-              type="text"
-              name="_gotcha"
-              tabindex="-1"
-              autocomplete="off"
-            >
-
-            <button
-              class="button button-primary"
-              type="submit"
-            >
-              Submit My Name
-            </button>
-
-          </form>
-
-          <p class="form-note">
-            Please submit first names only. Submission does not
-            guarantee inclusion in a future book.
-          </p>
-
-        </section>
-
-        <section class="roster-thank-you">
-
-          <p class="eyebrow">
-            A Dugout Detectives Thank You
-          </p>
-
-          <h2>
-            Built From a Community of Names
-          </h2>
-
-          <p>
-            Thank you to the 100,000+ people who believed in
-            our idea and shared their first names with us for
-            Puzzle Book 1.
-          </p>
-
-          <p>
-            Your support helped turn a giant list of names into
-            a one-of-a-kind softball mystery.
-          </p>
-
-        </section>
-
-        <section class="browse-roster">
-
-          <div class="roster-heading-row">
-
-            <div>
-              <p class="eyebrow">
-                Browse the Database
-              </p>
-
-              <h2>
-                Names A–Z
-              </h2>
-            </div>
-
-            <p id="roster-count" class="roster-count"></p>
-
-          </div>
-
-          <div
-            id="letter-navigation"
-            class="letter-navigation"
-            aria-label="Filter roster by first letter"
-          ></div>
-
-          <div
-            id="roster-list"
-            class="roster-list"
-          ></div>
-
-          <div class="roster-pagination">
-
-            <button
-              id="previous-roster-page"
-              class="button button-secondary"
-              type="button"
-            >
-              Previous
-            </button>
-
-            <span id="roster-page-status"></span>
-
-            <button
-              id="next-roster-page"
-              class="button button-secondary"
-              type="button"
-            >
-              Next
-            </button>
-
-          </div>
-
-        </section>
-
+    
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <p class="eyebrow">Player Database</p>
+    <h1>Official Roster</h1>
+    <p>Search the 50,000 player names used in Case File #001: The Missing MVP.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container roster-container">
+    <div class="panel roster-search-card">
+      <label for="roster-search">Was your name included in Puzzle Book 1?</label>
+      <div class="roster-search-row">
+        <input id="roster-search" type="search" autocomplete="off" spellcheck="false" placeholder="Enter a first name">
+        <button id="roster-search-button" class="button button-primary" type="button">Search Roster</button>
       </div>
+      <div id="roster-search-result" class="roster-search-result" aria-live="polite"></div>
+    </div>
+
+    <section id="name-request-section" class="panel name-request-section" hidden>
+      <p class="eyebrow">Future Case File Request</p>
+      <h2>Add Your Name to the Evidence Locker</h2>
+      <p>Your name was not found in Puzzle Book 1. Submit it for possible inclusion in a future mystery.</p>
+      <form class="name-request-form" action="https://formsubmit.co/ajax/ajfreemanbooks@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Dugout Detectives Name Request">
+        <label for="requested-name">First name</label>
+        <input id="requested-name" name="requested-name" type="text" required>
+        <button class="button button-primary" type="submit">Submit Name</button>
+      </form>
     </section>
 
-  </main>
+    <section class="panel browse-roster">
+      <div class="roster-heading-row">
+        <div><p class="eyebrow">Browse the Roster</p><h2>Names A–Z</h2></div>
+        <span id="roster-count" class="roster-count"></span>
+      </div>
+      <div id="letter-navigation" class="letter-navigation" aria-label="Filter roster by first letter"></div>
+      <div id="roster-list" class="roster-list"></div>
+      <div class="roster-pagination">
+        <button id="previous-roster-page" class="button button-secondary" type="button">Previous</button>
+        <span id="roster-page-status"></span>
+        <button id="next-roster-page" class="button button-secondary" type="button">Next</button>
+      </div>
+    </section>
+  </div>
+</section>
 
+  </main>
   <footer class="site-footer">
     <div class="container footer-wrap">
-
-      <p>
-        © 2026 Dugout Detectives. All rights reserved.
-      </p>
-
-      <p>
-        <a href="https://dugoutdetectives.com">
-          dugoutdetectives.com
-        </a>
-      </p>
-
+      <p>© 2026 Dugout Detectives. All rights reserved.</p>
+      <p><a href="about.html">About the Series</a></p>
     </div>
   </footer>
-
-  <script src="js/roster-data.js"></script>
-  <script src="js/roster.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/analytics.js"></script>
+  <script src="js/roster-data.js"></script><script src="js/roster.js"></script>
 </body>
 </html>

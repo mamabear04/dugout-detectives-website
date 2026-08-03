@@ -1,77 +1,61 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const client = window.dugoutSupabase;
+  const db = window.dugoutSupabase;
+  const rows = document.querySelector("#leaderboard-rows");
   const form = document.querySelector("#leaderboard-form");
-  const body = document.querySelector("#leaderboard-body");
   const message = document.querySelector("#leaderboard-message");
-  if (!client || !body) return;
 
   const formatTime = (seconds) => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = seconds % 60;
-    return [h, m, s].map(v => String(v).padStart(2, "0")).join(":");
+    return h ? `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}` : `${m}:${String(s).padStart(2,"0")}`;
   };
 
-  const loadEntries = async () => {
-    const { data, error } = await client
-      .from("leaderboard_entries")
-      .select("username, case_number, solve_seconds, completed_at")
-      .order("solve_seconds", { ascending: true })
-      .limit(100);
-
-    body.innerHTML = "";
+  const load = async () => {
+    const { data, error } = await db.from("leaderboard_public").select("*").eq("case_number","001").order("solve_seconds").limit(100);
     if (error) {
-      body.innerHTML = '<tr><td colspan="5">Scoreboard is warming up. Please check back soon.</td></tr>';
+      rows.innerHTML = '<p class="loading-row">The scoreboard will appear after the Supabase setup is complete.</p>';
       return;
     }
-    data.forEach((entry, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>${index + 1}</td><td>${entry.username}</td><td>${entry.case_number}</td><td>${formatTime(entry.solve_seconds)}</td><td>${new Date(entry.completed_at).toLocaleDateString()}</td>`;
-      body.appendChild(row);
-    });
+    if (!data.length) {
+      rows.innerHTML = '<p class="loading-row">No times yet. Be the first solver listed.</p>';
+      return;
+    }
+    rows.innerHTML = data.map((row, index) => `
+      <div class="scoreboard-row">
+        <strong>${index + 1}</strong><span>${row.username}</span><span>#${row.case_number}</span><span>${formatTime(row.solve_seconds)}</span>
+      </div>`).join("");
   };
 
-  await loadEntries();
-
-  form?.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const { data: auth } = await client.auth.getUser();
-    if (!auth?.user) {
-      message.textContent = "Sign in before posting an official solve time.";
-      message.className = "form-message error";
+    const { data: { session } } = await db.auth.getSession();
+    if (!session) {
+      message.textContent = "Sign in before posting a time.";
+      message.className = "form-message bad";
       return;
     }
-
-    const data = new FormData(form);
-    const hours = Number(data.get("hours") || 0);
-    const minutes = Number(data.get("minutes") || 0);
-    const seconds = Number(data.get("seconds") || 0);
-    const total = hours * 3600 + minutes * 60 + seconds;
-    const username = String(data.get("username") || "").trim();
-
-    if (!username || total <= 0 || minutes > 59 || seconds > 59) {
-      message.textContent = "Enter a username and a valid solve time.";
-      message.className = "form-message error";
+    const total = Number(document.querySelector("#solve-hours").value) * 3600
+      + Number(document.querySelector("#solve-minutes").value) * 60
+      + Number(document.querySelector("#solve-seconds").value);
+    if (total < 1) {
+      message.textContent = "Enter a time greater than zero.";
       return;
     }
-
-    const { error } = await client.from("leaderboard_entries").upsert({
-      user_id: auth.user.id,
-      username,
-      case_number: String(data.get("case_number") || "001"),
-      solve_seconds: total,
-      completed_at: new Date().toISOString()
+    const { error } = await db.from("leaderboard_entries").upsert({
+      user_id: session.user.id,
+      case_number: document.querySelector("#case-number").value,
+      solve_seconds: total
     }, { onConflict: "user_id,case_number" });
-
     if (error) {
       message.textContent = error.message;
-      message.className = "form-message error";
+      message.className = "form-message bad";
       return;
     }
-
-    message.textContent = "Your time is on the scoreboard!";
-    message.className = "form-message success";
-    form.reset();
-    await loadEntries();
+    message.textContent = "Your best time is now on the scoreboard.";
+    message.className = "form-message good";
+    load();
   });
+
+  load();
 });
