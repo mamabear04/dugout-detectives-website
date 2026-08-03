@@ -3,65 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Clutch Solver Scoreboard | Dugout Detectives</title>
-  <meta name="description" content="View and submit solve times.">
+
+  <meta
+    name="description"
+    content="View the fastest Dugout Detectives solve times and submit your official Case File #001 result."
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
+<body class="scoreboard-page">
+
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html">Dugout Detectives</a>
+
+      <a class="brand" href="index.html">
+        Dugout Detectives
+      </a>
+
       <nav class="site-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="roster.html">Roster</a>
         <a href="verify.html">Verify</a>
-        <a href="leaderboard.html">Scoreboard</a>
+        <a href="leaderboard.html" aria-current="page">Scoreboard</a>
         <a href="about.html">About</a>
         <a class="nav-account" href="account.html">Sign In</a>
       </nav>
+
     </div>
   </header>
+
   <main>
-    
-<section class="page-hero">
-  <div class="container page-hero-inner">
-    <p class="eyebrow">Clutch Solver Scoreboard</p>
-    <h1>Fastest Solvers</h1>
-    <p>Post the time it took to close the case and see where you rank.</p>
-  </div>
-</section>
-<section class="section">
-  <div class="container leaderboard-layout">
-    <section class="panel scoreboard-table-card">
-      <div class="scoreboard-table-head"><span>Rank</span><span>Solver</span><span>Case</span><span>Time</span></div>
-      <div id="leaderboard-rows" class="leaderboard-rows"><p class="loading-row">Loading the scoreboard…</p></div>
-    </section>
-    <aside class="panel submit-time-card">
-      <p class="eyebrow">Post Your Time</p>
-      <form id="leaderboard-form" class="leaderboard-form">
-        <label>Case<select id="case-number"><option value="001">Case File #001</option></select></label>
-        <div class="time-fields">
-          <label>Hours<input id="solve-hours" type="number" min="0" max="999" value="0" required></label>
-          <label>Minutes<input id="solve-minutes" type="number" min="0" max="59" value="0" required></label>
-          <label>Seconds<input id="solve-seconds" type="number" min="0" max="59" value="0" required></label>
+
+    <section class="page-hero">
+      <div class="container scoreboard-intro">
+
+        <div class="scoreboard-intro-copy">
+          <p class="eyebrow">
+            Clutch Solver Scoreboard
+          </p>
+
+          <h1>
+            The Fastest Case Closers
+          </h1>
+
+          <p>
+            Record the time it took to solve Case File #001
+            and see where you rank among other Dugout
+            Detectives.
+          </p>
         </div>
-        <button class="button button-primary" type="submit">Submit Time</button>
-      </form>
-      <p id="leaderboard-message" class="form-message" role="status"></p>
-    </aside>
-  </div>
-</section>
+
+        <div class="scoreboard-intro-note">
+          Only signed-in readers can submit a time. Your
+          public username appears on the board; your email
+          remains private.
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container scoreboard-shell">
+
+        <section class="scoreboard-summary" aria-label="Scoreboard summary">
+
+          <article class="summary-card">
+            <span>Case</span>
+            <strong>#001</strong>
+          </article>
+
+          <article class="summary-card">
+            <span>Listed Solvers</span>
+            <strong id="solver-count">—</strong>
+          </article>
+
+          <article class="summary-card">
+            <span>Fastest Time</span>
+            <strong id="fastest-time">—</strong>
+          </article>
+
+        </section>
+
+        <section class="podium" aria-label="Top three solvers">
+
+          <article class="podium-card second" id="podium-second">
+            <div class="podium-rank">2</div>
+            <strong class="podium-name">Waiting</strong>
+            <span class="podium-time">No time posted</span>
+            <span class="podium-case">Case #001</span>
+          </article>
+
+          <article class="podium-card first" id="podium-first">
+            <div class="podium-rank">1</div>
+            <strong class="podium-name">Waiting</strong>
+            <span class="podium-time">No time posted</span>
+            <span class="podium-case">Case #001</span>
+          </article>
+
+          <article class="podium-card third" id="podium-third">
+            <div class="podium-rank">3</div>
+            <strong class="podium-name">Waiting</strong>
+            <span class="podium-time">No time posted</span>
+            <span class="podium-case">Case #001</span>
+          </article>
+
+        </section>
+
+        <div class="scoreboard-main-grid">
+
+          <section class="panel scoreboard-table-card">
+
+            <div class="scoreboard-card-header">
+              <h2>Official Standings</h2>
+
+              <div class="scoreboard-filters" aria-label="Scoreboard filters">
+                <button
+                  class="scoreboard-filter active"
+                  type="button"
+                  data-filter="all"
+                >
+                  All Time
+                </button>
+
+                <button
+                  class="scoreboard-filter"
+                  type="button"
+                  data-filter="30"
+                >
+                  Last 30 Days
+                </button>
+              </div>
+            </div>
+
+            <div class="scoreboard-table-head" aria-hidden="true">
+              <span>Rank</span>
+              <span>Solver</span>
+              <span>Case</span>
+              <span>Time</span>
+              <span>Posted</span>
+            </div>
+
+            <div
+              id="leaderboard-rows"
+              class="leaderboard-rows"
+              aria-live="polite"
+            >
+              <div class="scoreboard-empty">
+                <strong>Loading the lineup…</strong>
+                <span>The official standings will appear here.</span>
+              </div>
+            </div>
+
+          </section>
+
+          <aside class="panel submit-time-card">
+
+            <p class="eyebrow">
+              Post Your Time
+            </p>
+
+            <h2>
+              Enter the Lineup
+            </h2>
+
+            <p>
+              Submit your best official solve time after
+              verifying the correct final name.
+            </p>
+
+            <form id="leaderboard-form" class="leaderboard-form">
+
+              <label for="case-number">
+                Case
+                <select id="case-number">
+                  <option value="001">Case File #001</option>
+                </select>
+              </label>
+
+              <div class="time-fields">
+
+                <label for="solve-hours">
+                  Hours
+                  <input
+                    id="solve-hours"
+                    type="number"
+                    min="0"
+                    max="999"
+                    value="0"
+                    required
+                  >
+                </label>
+
+                <label for="solve-minutes">
+                  Minutes
+                  <input
+                    id="solve-minutes"
+                    type="number"
+                    min="0"
+                    max="59"
+                    value="0"
+                    required
+                  >
+                </label>
+
+                <label for="solve-seconds">
+                  Seconds
+                  <input
+                    id="solve-seconds"
+                    type="number"
+                    min="0"
+                    max="59"
+                    value="0"
+                    required
+                  >
+                </label>
+
+              </div>
+
+              <div class="solve-time-preview">
+                <span>Your submitted time</span>
+                <strong id="solve-time-preview">0:00</strong>
+              </div>
+
+              <button class="button button-primary" type="submit">
+                Submit Official Time
+              </button>
+
+            </form>
+
+            <p
+              id="leaderboard-message"
+              class="form-message"
+              role="status"
+            ></p>
+
+            <ul class="scoreboard-guidelines">
+              <li>One best time per reader and case.</li>
+              <li>A new submission replaces your previous time.</li>
+              <li>Use the time it took to complete the full case.</li>
+            </ul>
+
+          </aside>
+
+        </div>
+
+        <section class="scoreboard-callout">
+
+          <div>
+            <p class="eyebrow">
+              Not Ready to Post?
+            </p>
+
+            <h2>
+              Close the case first.
+            </h2>
+
+            <p>
+              Verify your final remaining name before adding
+              your time to the official standings.
+            </p>
+          </div>
+
+          <a class="button button-secondary" href="verify.html">
+            Verify Your Solution
+          </a>
+
+        </section>
+
+      </div>
+    </section>
 
   </main>
+
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© 2026 Dugout Detectives. All rights reserved.</p>
-      <p><a href="about.html">About the Series</a></p>
+
+      <p>
+        © 2026 Dugout Detectives. All rights reserved.
+      </p>
+
+      <p>
+        <a href="about.html">
+          About the Series
+        </a>
+      </p>
+
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-config.js"></script><script src="js/leaderboard.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/leaderboard.js"></script>
+
 </body>
 </html>

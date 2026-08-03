@@ -1,29 +1,34 @@
-DUGOUT DETECTIVES — COMPLETE EDITORIAL REFRESH
+DUGOUT DETECTIVES — SCOREBOARD REFRESH
 
-This package contains complete replacement files for every solver-facing page:
-- index.html
-- roster.html
-- verify.html
-- leaderboard.html
-- account.html
-- about.html
-- css/style.css
-- js files used by those pages
-- updated book images
+This package contains three complete replacement files:
 
-Do not paste partial code. Replace the full files and folders.
+1. leaderboard.html
+2. css/style.css
+3. js/leaderboard.js
 
-Recommended GitHub method:
+Do not paste partial sections.
+
+REPLACEMENT STEPS WITH GITHUB DESKTOP
+
 1. Download and extract this ZIP.
-2. Open your repository in GitHub Desktop.
-3. Open the local repository folder.
-4. Copy every extracted file and folder into the repository folder.
-5. Choose Replace when prompted.
-6. In GitHub Desktop, confirm the changed-file list.
-7. Commit with: Complete editorial website refresh
-8. Click Push origin.
-9. Wait for GitHub Pages to deploy.
-10. Hard-refresh the live site.
+2. Open GitHub Desktop.
+3. Select your dugout-detectives-website repository.
+4. Click Repository > Show in Explorer/Finder.
+5. Copy the three extracted files into the matching locations:
+   - leaderboard.html goes in the repository root.
+   - style.css goes inside the css folder.
+   - leaderboard.js goes inside the js folder.
+6. Choose Replace when your computer asks.
+7. Return to GitHub Desktop.
+8. Confirm that exactly those three files appear as changed.
+9. Commit with:
+   Refresh Clutch Solver Scoreboard
+10. Click Push origin.
+11. Wait for GitHub Pages to deploy.
+12. Open:
+   https://dugoutdetectives.com/leaderboard.html
+13. Hard-refresh:
+   Windows: Ctrl + Shift + R
+   Mac: Command + Shift + R
 
-The Roster and Verify JavaScript behavior is preserved.
-Account and Scoreboard require the Supabase tables/functions from supabase-setup.sql to already exist.
+This redesign keeps the existing Supabase connection and leaderboard data.
